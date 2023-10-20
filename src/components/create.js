@@ -13,6 +13,7 @@ function Create() {
         " Cover: "+cover+
         " Author: "+author);
     }
+    // some comment
     return (
         <div>
             <h2>Hello from create Component!</h2>
