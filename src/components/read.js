@@ -8,7 +8,7 @@ function Read() {
 
   useEffect(
     ()=>{
-        for(let i=0;i<1000000000;i++){
+        
         axios.get('http://localhost:4000/api/books')
         .then(
             (response)=>{
@@ -20,7 +20,6 @@ function Read() {
                 console.log(error);
             }
         )
-        }
 
     }, []
   );
