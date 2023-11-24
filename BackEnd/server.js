@@ -37,7 +37,15 @@ const bookSchema = new mongoose.Schema({
   author:String
 })
 
-const bookModel = mongoose.model('my_books', bookSchema);
+const bookModel = mongoose.model('sdfsdfsdfsdfsdfffffffffffff423', bookSchema);
+
+app.put('/api/book/:id', async(req, res)=>{
+  console.log("Update: "+req.params.id);
+
+  let book = await bookModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
+  res.send(book);
+})
+
 
 app.post('/api/book', (req,res)=>{
     console.log(req.body);
