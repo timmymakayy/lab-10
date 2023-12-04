@@ -39,6 +39,15 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', bookSchema);
 
+
+// Serve the static files from the React app
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
+
+
+
+
 app.delete('/api/book/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
 
@@ -84,6 +93,13 @@ app.get('/api/book/:identifier',async (req,res)=>{
   let book = await bookModel.findById(req.params.identifier);
   res.send(book);
 })
+
+
+//if not there it wil not direct you to the index page
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/../build/index.html'));
+  });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
